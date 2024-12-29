@@ -250,7 +250,7 @@ MonoBehaviour:
   damageThreshold: 2
   IsCanAttack: 0
   _bullet: {fileID: 8513177722885518351, guid: 4f7fa4909e6b45d4980b44250794eafc, type: 3}
-  _bulletSpeed: 3
+  _bulletSpeed: 5
   _spawnPoint: {fileID: 3988188369429697826}
   _attackTimer: 6
   _animator: {fileID: 4046354646054197695}
