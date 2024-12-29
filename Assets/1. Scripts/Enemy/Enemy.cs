@@ -6,11 +6,6 @@ using UnityEngine;
 [Serializable]
 public class Enemy : MonoBehaviour
 {
-    [Header("Bullet")]
-    [SerializeField] protected GameObject bullet;
-    [SerializeField] protected Transform bulletSpawnPoint;
-    [SerializeField] protected float bulletSpeed = 2f;
-
     public enum EnemyType
     {
         Normal,

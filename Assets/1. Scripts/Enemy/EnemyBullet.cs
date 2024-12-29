@@ -21,7 +21,10 @@ public class EnemyBullet : MonoBehaviour
         {
             Debug.LogError("Target Collider is not assigned!");
         }
+    }
 
+    private void Start()
+    {
         // 발사 초기화
         InitializeBulletDirection();
     }
@@ -49,7 +52,6 @@ public class EnemyBullet : MonoBehaviour
 
         // 방향 계산 및 속도 설정
         direction = (targetPoint - transform.position).normalized;
-        Debug.Log(direction);
     }
 
     private Vector3 GetRandomPointInBounds()

@@ -527,6 +527,22 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4376742289151783089, guid: e19984e74e91c7144bee4cf1427c511d,
         type: 3}
+      propertyPath: _bullet
+      value: 
+      objectReference: {fileID: 8513177722885518351, guid: 4f7fa4909e6b45d4980b44250794eafc,
+        type: 3}
+    - target: {fileID: 4376742289151783089, guid: e19984e74e91c7144bee4cf1427c511d,
+        type: 3}
+      propertyPath: _spawnPoint
+      value: 
+      objectReference: {fileID: 7118829041631535672}
+    - target: {fileID: 4376742289151783089, guid: e19984e74e91c7144bee4cf1427c511d,
+        type: 3}
+      propertyPath: _attackTimer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376742289151783089, guid: e19984e74e91c7144bee4cf1427c511d,
+        type: 3}
       propertyPath: bulletSpawnPoint
       value: 
       objectReference: {fileID: 7118829041631535672}

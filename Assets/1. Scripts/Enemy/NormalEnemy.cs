@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class NormalEnemy : Enemy
 {
-    public float _attackTimer = 4f;
+    [Header("Bullet")]
+    public GameObject _bullet;
+    public float _bulletSpeed = 2f;
+    public Transform _spawnPoint;
+    public float _attackTimer = 6f;
     private float _currentAttackTimer = 0f;
 
 
@@ -23,10 +27,10 @@ public class NormalEnemy : Enemy
             if(_currentAttackTimer >= _attackTimer)
             {
                 _currentAttackTimer = 0f;
-                GameObject go = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
+                GameObject go = Instantiate(_bullet, _spawnPoint.position, Quaternion.identity);
                 EnemyBullet enemyBulet = go.GetComponent<EnemyBullet>();
                 enemyBulet.BulletType = 0;
-                enemyBulet.bulletSpeed = bulletSpeed;
+                enemyBulet.bulletSpeed = _bulletSpeed;
             }
         }
     }

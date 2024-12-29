@@ -1,11 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class BossEnemy : Enemy
 {
+    [Header("Bullet")]
+    public GameObject _bullet;
+    public float _bulletSpeed = 2f;
+    public List<Transform> _spawnPoints = new List<Transform>();
     public float _attackTimer = 6f;
+    public float _nextAttackTime = 0.5f;
     public int _attackCount = 4;
     private float _currentAttackTimer = 0f;
 
@@ -32,11 +38,12 @@ public class BossEnemy : Enemy
     {
         for(int i = 0; i < _attackCount; i++)
         {
-            GameObject go = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
+            int randomPos = UnityEngine.Random.Range(0, _spawnPoints.Count);
+            GameObject go = Instantiate(_bullet, _spawnPoints[randomPos].position, Quaternion.identity);
             EnemyBullet enemyBulet = go.GetComponent<EnemyBullet>();
             enemyBulet.BulletType = 1;
-            enemyBulet.bulletSpeed = bulletSpeed;
-            yield return new WaitForSeconds(0.5f);
+            enemyBulet.bulletSpeed = _bulletSpeed;
+            yield return new WaitForSeconds(_nextAttackTime);
         }
     }
 
