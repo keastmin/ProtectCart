@@ -49,6 +49,8 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
             _dragPosition.SetActive(true);
             _dragAnchorTransform.anchoredPosition = _dragStartPos;
             _dragPositionTransform.anchoredPosition = _dragStartPos;
+            _dragAnchorTransform.localScale = new Vector2(0.5f, 0.5f);
+            _dragPositionTransform.localScale = new Vector2(0.5f, 0.5f);
         }
     }
 
@@ -84,9 +86,15 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
             _dragPositionTransform.anchoredPosition = _currentDragPos;
             direction = (_dragStartPos - _currentDragPos).normalized;
 
+            float speed = distance / _maxDragDistance;
+            float threshold = 0.5f + (0.5f * speed);
+            Vector3 scale = new Vector2(threshold, threshold);
+            _dragAnchorTransform.localScale = scale;
+            _dragPositionTransform.localScale = scale;
+
             // set the fire info
             _playerFireInfo.IsAiming = (distance >= _aimingStartDistance) ? true : false;
-            _playerFireInfo.Speed = distance / _maxDragDistance;
+            _playerFireInfo.Speed = speed;
             _playerFireInfo.Direction = new Vector3(direction.x, direction.y, 0);        
         }
     }

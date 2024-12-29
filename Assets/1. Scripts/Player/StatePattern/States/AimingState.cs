@@ -32,6 +32,8 @@ public class AimingState : IState
 
     public void Enter()
     {
+        player._audioSource.PlayOneShot(player.audioClips[0]);
+        player.BallEffect.SetActive(true);
         _lineRenderer.enabled = true;
         player.Ani.SetBool("Aiming", true);
         //Debug.Log("Aiming 상태 진입");
@@ -53,6 +55,7 @@ public class AimingState : IState
 
     public void Exit()
     {
+        player.BallEffect.SetActive(false);
         _lineRenderer.positionCount = 0;
         _lineRenderer.enabled = false;
         player.Ani.SetBool("Aiming", false);

@@ -19,8 +19,12 @@ public class SmallObstacle : Obstacle
         {
             ApplyDamage(damage - damageThreshold);
 
+            Vector3 pos = collision.GetContact(0).point;
+            Instantiate(hitParticle, pos, Quaternion.identity);
+
             if (currentHealth <= 0)
             {
+                Instantiate(smokeParticle, transform.position, Quaternion.identity);
                 isDead = true;
                 Die();
             }

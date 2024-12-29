@@ -48,9 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60622b9dfae7e3742bd9625403aa0524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyContainer: {fileID: 0}
   health: 50
   damageThreshold: 4
+  fireParticle: {fileID: 1972207730512856, guid: ea4fb55d0227e604386f44f905cfe7c0,
+    type: 3}
+  smokeParticle: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00,
+    type: 3}
+  hitParticle: {fileID: 1337198075554910, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4,
+    type: 3}
   _smallObstacle: {fileID: 4733932962792327542, guid: 6696a0bbb3fa36b4ca88277b18014b0f,
     type: 3}
 --- !u!33 &1966669679705264710

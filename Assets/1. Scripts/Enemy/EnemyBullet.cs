@@ -6,6 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     public int BulletType = 0; // 0: Áß¾Ó (y °ª ·£´ý), 1: ¹üÀ§ ³» ·£´ý
     public float bulletSpeed = 10f;
+    [SerializeField] GameObject _particle;
 
     private Vector3 direction;
     private Collider targetCollider;
@@ -84,6 +85,7 @@ public class EnemyBullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(collision.gameObject);
+        Instantiate(_particle, collision.GetContact(0).point, Quaternion.identity);
         Destroy(this.gameObject);
     }
 }

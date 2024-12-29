@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Ball")]
     public GameObject Ball;
+    public GameObject BallEffect;
+
+    [Header("Sound")]
+    public AudioSource _audioSource;
+    public List<AudioClip> audioClips;
 
     public PlayerStateMachine PStateMachine => playerStateMachine;
     private PlayerStateMachine playerStateMachine;
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        BallEffect.SetActive(false);
         playerStateMachine.Initialize(playerStateMachine.idleState);
     }
 

@@ -50,6 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletType: 0
   bulletSpeed: 2
+  _particle: {fileID: 362261158077530393, guid: 20fda529c996a334da7fd65b48ea40df,
+    type: 3}
 --- !u!33 &9115188824462077519
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -78,7 +80,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 274415f64b8f2f1408408ea7a5037726, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -12,6 +12,7 @@ public class NormalEnemy : Enemy
     public float _attackTimer = 6f;
     private float _currentAttackTimer = 0f;
 
+    [SerializeField] private Animator _animator;
 
     private void Awake()
     {
@@ -40,7 +41,12 @@ public class NormalEnemy : Enemy
         float damage;
         bool isCanDamage = CalculateDamage(out damage, collision);
 
-        if (damage > damageThreshold && isCanDamage && !_isDead)
+        if (!_isDead && collision.collider.CompareTag("Ground"))
+        {
+            currentHealth = 0;
+            Die();
+        }
+        else if (damage > damageThreshold && isCanDamage && !_isDead)
         {
             ApplyDamage(damage - damageThreshold);
 
@@ -48,17 +54,20 @@ public class NormalEnemy : Enemy
             {
                 Die();
             }
+            else
+            {
+                _animator.Play("Hit");
+            }
         }
     }
 
     protected override void Die()
     {
         Debug.Log("Normal Enemy is Dead");
+        _animator.SetTrigger("Die");
         _isDead = true;
         GetComponent<Rigidbody>().isKinematic = true;
 
         base.Die();
-
-        Destroy(this.gameObject);
     }
 }

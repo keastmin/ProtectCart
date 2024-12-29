@@ -6,10 +6,11 @@ using UnityEngine;
 [Serializable]
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] protected Transform enemyContainer;
     [SerializeField] protected float health;
     protected float currentHealth;
     [SerializeField] protected float damageThreshold;
+    [SerializeField] protected GameObject smokeParticle;
+    [SerializeField] protected GameObject hitParticle;
     protected bool isDead;
 
     protected bool CalculateDamage(out float damage, Collision collision)

@@ -21,9 +21,13 @@ public class BigObstacle : Obstacle
         {
             ApplyDamage(damage - damageThreshold);
 
-            if(currentHealth <= 0)
+            Vector3 pos = collision.GetContact(0).point;
+            Instantiate(hitParticle, pos, Quaternion.identity);
+
+            if (currentHealth <= 0)
             {
                 isDead = true;
+                Instantiate(smokeParticle, transform.position, Quaternion.identity);
                 Die();
             }
         }
@@ -48,11 +52,11 @@ public class BigObstacle : Obstacle
         Vector3 bottomPosition = originalPosition - transform.up * (originalScale.y / 4);
 
         // 위쪽 오브젝트 생성
-        GameObject topObstacle = Instantiate(_middleObstacle, topPosition, originalRotation, enemyContainer);
+        GameObject topObstacle = Instantiate(_middleObstacle, topPosition, originalRotation, transform.parent);
         topObstacle.transform.localScale = middleScale;
 
         // 아래쪽 오브젝트 생성
-        GameObject bottomObstacle = Instantiate(_middleObstacle, bottomPosition, originalRotation, enemyContainer);
+        GameObject bottomObstacle = Instantiate(_middleObstacle, bottomPosition, originalRotation, transform.parent);
         bottomObstacle.transform.localScale = middleScale;
 
         // 원래 오브젝트 파괴

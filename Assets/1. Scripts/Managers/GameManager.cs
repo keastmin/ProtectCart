@@ -19,12 +19,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _orthoCamera;
     [SerializeField] private CinemachineVirtualCamera _perspCamera;
 
+    [SerializeField] private GameObject _clearPanel;
     public GameState CurrentGameState => _gameState;
     private GameState _gameState = GameState.OrthoMode;
 
     private void Awake()
     {
         Instance = this;
+        _clearPanel.SetActive(false);
     }
 
     void Start()
@@ -83,7 +85,9 @@ public class GameManager : MonoBehaviour
 
     public void MoveClearScene()
     {
-
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        _clearPanel.SetActive(true);
     }
 
     public void MoveDefeatScene()

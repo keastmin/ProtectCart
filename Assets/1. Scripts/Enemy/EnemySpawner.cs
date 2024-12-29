@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using static GameManager;
 
@@ -7,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _enemies;
     [SerializeField] private List<Vector3> _moveTarget;
+    [SerializeField] private TextMeshProUGUI _stageText;
 
     public GameObject CurrentEnemy => _currentEnemy;
     private GameObject _currentEnemy;
@@ -27,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         _currentEnemy = Instantiate(_enemies[enemyCount], transform.position, Quaternion.identity);
-
+        _stageText.text = "Stage " + (enemyCount + 1);
         Enemy enemy = _currentEnemy.GetComponentInChildren<Enemy>();
 
         if(enemy != null)

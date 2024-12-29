@@ -14,7 +14,7 @@ public class ShootState : IState
     public void Enter()
     {
         //Debug.Log("Shoot 상태 진입");
-
+        player._audioSource.PlayOneShot(player.audioClips[1]);
         player.ShootBall(CalculateForce());
     }
 

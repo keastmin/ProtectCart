@@ -21,8 +21,12 @@ public class MiddleObstacle : Obstacle
         {
             ApplyDamage(damage - damageThreshold);
 
+            Vector3 pos = collision.GetContact(0).point;
+            Instantiate(hitParticle, pos, Quaternion.identity);
+
             if (currentHealth <= 0)
             {
+                Instantiate(smokeParticle, transform.position, Quaternion.identity);
                 isDead = true;
                 Die();
             }
@@ -32,6 +36,8 @@ public class MiddleObstacle : Obstacle
     protected override void Die()
     {
         Debug.Log("Middle Obstacle is Dead");
+
+        // Transform enemyContainer = GetComponentInParent<Transform>();
 
         // 현재 오브젝트의 Transform 정보
         Vector3 originalPosition = transform.position;
@@ -48,11 +54,11 @@ public class MiddleObstacle : Obstacle
         Vector3 bottomPosition = originalPosition - transform.up * (originalScale.y / 2);
 
         // 위쪽 오브젝트 생성
-        GameObject topObstacle = Instantiate(_smallObstacle, topPosition, originalRotation, enemyContainer);
+        GameObject topObstacle = Instantiate(_smallObstacle, topPosition, originalRotation, transform.parent);
         topObstacle.transform.localScale = middleScale;
 
         // 아래쪽 오브젝트 생성
-        GameObject bottomObstacle = Instantiate(_smallObstacle, bottomPosition, originalRotation, enemyContainer);
+        GameObject bottomObstacle = Instantiate(_smallObstacle, bottomPosition, originalRotation, transform.parent);
         bottomObstacle.transform.localScale = middleScale;
 
         // 원래 오브젝트 파괴
