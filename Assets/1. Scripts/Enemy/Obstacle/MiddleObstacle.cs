@@ -37,31 +37,22 @@ public class MiddleObstacle : Obstacle
     {
         Debug.Log("Middle Obstacle is Dead");
 
-        // Transform enemyContainer = GetComponentInParent<Transform>();
-
-        // 현재 오브젝트의 Transform 정보
         Vector3 originalPosition = transform.position;
         Quaternion originalRotation = transform.rotation;
         Vector3 originalScale = transform.localScale;
 
-        // _smallObstacle 크기 조정 (y 방향 절반)
         Vector3 middleScale = new Vector3(originalScale.x, originalScale.y / 2, originalScale.z);
 
-        // 위쪽 절반 위치 계산
         Vector3 topPosition = originalPosition + transform.up * (originalScale.y / 2);
 
-        // 아래쪽 절반 위치 계산
         Vector3 bottomPosition = originalPosition - transform.up * (originalScale.y / 2);
 
-        // 위쪽 오브젝트 생성
         GameObject topObstacle = Instantiate(_smallObstacle, topPosition, originalRotation, transform.parent);
         topObstacle.transform.localScale = middleScale;
 
-        // 아래쪽 오브젝트 생성
         GameObject bottomObstacle = Instantiate(_smallObstacle, bottomPosition, originalRotation, transform.parent);
         bottomObstacle.transform.localScale = middleScale;
 
-        // 원래 오브젝트 파괴
         Destroy(this.gameObject);
     }
 }

@@ -19,7 +19,6 @@ public class Obstacle : MonoBehaviour
         if(collision.rigidbody != null)
         {
             damage = collision.relativeVelocity.magnitude * collision.rigidbody.mass;
-            //Debug.Log(damage);
             return true;
         }
         return false;
@@ -28,7 +27,6 @@ public class Obstacle : MonoBehaviour
     protected void ApplyDamage(float damage)
     {
         currentHealth -= damage;
-        //Debug.Log($"{health} / {currentHealth}");
     }
 
     protected virtual void Die()

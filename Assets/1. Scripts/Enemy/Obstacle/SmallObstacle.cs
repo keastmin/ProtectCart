@@ -35,7 +35,6 @@ public class SmallObstacle : Obstacle
     {
         Debug.Log("Small Obstacle is Dead");
 
-        // 원래 오브젝트 파괴
         Destroy(this.gameObject);
     }
 }

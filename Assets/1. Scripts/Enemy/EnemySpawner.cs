@@ -70,27 +70,20 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator StartMoveEnemy(Vector3 target)
     {
-        // 초기 위치
         Vector3 startPosition = _currentEnemy.transform.position;
 
-        // 이동 시간
         float duration = 3f;
         float elapsedTime = 0f;
 
-        // 3초 동안 이동
         while (elapsedTime < duration)
         {
-            // 시간 갱신
             elapsedTime += Time.deltaTime;
 
-            // Lerp를 사용하여 위치 갱신
             _currentEnemy.transform.position = Vector3.Lerp(startPosition, target, elapsedTime / duration);
 
-            // 다음 프레임까지 대기
             yield return null;
         }
 
-        // 정확히 목표 지점에 위치를 설정 (Lerp로 인해 부정확할 수 있음)
         _currentEnemy.transform.position = target;
 
         Enemy enemy = _currentEnemy.GetComponentInChildren<Enemy>();
@@ -99,23 +92,17 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator DeadMoveEnemy(Vector3 target)
     {
-        // 초기 위치
         Vector3 startPosition = _currentEnemy.transform.position;
 
-        // 이동 시간
         float duration = 3f;
         float elapsedTime = 0f;
 
-        // 3초 동안 이동
         while (elapsedTime < duration)
         {
-            // 시간 갱신
             elapsedTime += Time.deltaTime;
 
-            // Lerp를 사용하여 위치 갱신
             _currentEnemy.transform.position = Vector3.Lerp(startPosition, target, elapsedTime / duration);
 
-            // 다음 프레임까지 대기
             yield return null;
         }
 

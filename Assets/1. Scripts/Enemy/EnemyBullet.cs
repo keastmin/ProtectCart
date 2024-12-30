@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public int BulletType = 0; // 0: 중앙 (y 값 랜덤), 1: 범위 내 랜덤
+    public int BulletType = 0;
     public float bulletSpeed = 10f;
     [SerializeField] GameObject _particle;
 
@@ -26,7 +26,6 @@ public class EnemyBullet : MonoBehaviour
 
     private void Start()
     {
-        // 발사 초기화
         InitializeBulletDirection();
     }
 
@@ -42,16 +41,13 @@ public class EnemyBullet : MonoBehaviour
 
         if (BulletType == 1)
         {
-            // 범위 내 랜덤 위치
             targetPoint = GetRandomPointInBounds();
         }
         else
         {
-            // 중앙 위치, Y 값만 랜덤
             targetPoint = GetCenterPointWithRandomY();
         }
 
-        // 방향 계산 및 속도 설정
         direction = (targetPoint - transform.position).normalized;
     }
 
